@@ -44,23 +44,29 @@ dstTable = {}
 
 for p in srcPaths:
     print "collecting from " + p + " ; " + str(datetime.datetime.now())
+    sys.stdout.flush()
     addDirToTable(p, srcTable)
 
 for p in dstPaths:
     print "collecting from " + p + " ; " + str(datetime.datetime.now())
+    sys.stdout.flush()
     addDirToTable(p, dstTable)
 
 print "Comparing collections " + str(datetime.datetime.now())
+sys.stdout.flush()
 onlyInA , onlyInB, correlation = compareTables(srcTable, dstTable)
 
 print "Files only in both sets:"
+sys.stdout.flush()
 for f in correlation:
     print f
 
 print "Files only in " + str(srcPaths) + " :"
+sys.stdout.flush()
 for f in onlyInA:
     print f
 
 print "Files only in " + str(dstPaths) + " :"
+sys.stdout.flush()
 for f in onlyInB:
     print f
